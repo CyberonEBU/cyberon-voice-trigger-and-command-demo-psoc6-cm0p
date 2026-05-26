@@ -132,7 +132,7 @@ void cyberon_asr_process(short *lpsSample, int nNumSample)
 
 		if(!bEnableTimeout)
 		{
-			CybModelGetCommandInfo(g_hCybModel, 0, nCommandID, pchCommand, 64, &nMapID, NULL);
+			CybModelGetCommandInfo(g_hCybModel, 0, nCommandID, pchCommand, 64, &nMapID);
 			g_hDSpotter = DSpotter_Init_Multi((BYTE *)CybModelGetBase(g_hCybModel), (BYTE **)&g_lppbyGroup[1], 1, MAX_TIME, g_lpbyMemPool, g_nMemPool, NULL, 0, &nErr, (BYTE *)&__start_license_data);
 #if ENABLE_AGC
 			DSpotterAGC_Enable(g_hDSpotter);
@@ -142,7 +142,7 @@ void cyberon_asr_process(short *lpsSample, int nNumSample)
 		}
 		else
 		{
-			CybModelGetCommandInfo(g_hCybModel, 1, nCommandID, pchCommand, 64, &nMapID, NULL);
+			CybModelGetCommandInfo(g_hCybModel, 1, nCommandID, pchCommand, 64, &nMapID);
 			DSpotter_Continue(g_hDSpotter);
 			nCount = 0;
 		}
